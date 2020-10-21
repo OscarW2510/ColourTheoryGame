@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Player Display
+  - FallDetector
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

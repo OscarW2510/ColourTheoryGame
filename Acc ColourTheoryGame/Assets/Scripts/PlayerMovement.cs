@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public Transform playerTransform;
     public float playerSpeed;
+    public Vector3 respawnPoint;
 
     private float move;
     private Rigidbody2D rb;
@@ -13,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        respawnPoint = transform.position;
     }
 
     void Update()
@@ -42,6 +44,20 @@ public class PlayerMovement : MonoBehaviour
                 rb.AddForce(Vector3.up * (rb.mass * rb.gravityScale * 20f * 10f));
                 Debug.Log("Working jump you twat");
             }
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "FallDetector")
+        {
+            transform.position = respawnPoint;
+
+        }
+        
+        if(other.tag == "Checkpoint")
+        {
+            respawnPoint = other.transform.position;
         }
     }
 }
