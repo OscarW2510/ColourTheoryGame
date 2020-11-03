@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 respawnPoint;
 
     private float move;
+    public Animator animator;
     private Rigidbody2D rb;
     
     void Start()
@@ -20,7 +21,8 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         move = Input.GetAxis("Horizontal");
-
+        animator.SetBool("Moving", (move != 0) ? true : false);
+        
         rb.velocity = new Vector2(move * playerSpeed, rb.velocity.y);
 
         if (move < 0)
@@ -32,6 +34,13 @@ public class PlayerMovement : MonoBehaviour
             playerTransform.eulerAngles = new Vector3(0, 0, 0);
         }
 
+        bool Running = Input.GetKey(KeyCode.LeftShift);
+        if (move != 0)
+        {      
+            animator.SetBool("Running", Running);
+        }
+        else
+            animator.SetBool("Running", false);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
