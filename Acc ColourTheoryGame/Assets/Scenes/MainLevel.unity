@@ -3875,7 +3875,6 @@ GameObject:
   - component: {fileID: 1499515152}
   - component: {fileID: 1499515151}
   - component: {fileID: 1499515150}
-  - component: {fileID: 1499515153}
   - component: {fileID: 1499515154}
   m_Layer: 0
   m_Name: New Sprite
@@ -3967,22 +3966,6 @@ Transform:
   m_Father: {fileID: 1065759711}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!70 &1499515153
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1499515149}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.003085718, y: -0.029903878}
-  m_Size: {x: 0.18524991, y: 0.3531991}
-  m_Direction: 0
 --- !u!68 &1499515154
 EdgeCollider2D:
   m_ObjectHideFlags: 0
