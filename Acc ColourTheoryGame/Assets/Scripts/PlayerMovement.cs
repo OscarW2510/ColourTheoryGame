@@ -53,6 +53,14 @@ public class PlayerMovement : MonoBehaviour
             animator.SetTrigger("Attack");
         }
 
+        bool Roll = Input.GetKey(KeyCode.LeftControl);
+        if (move != 0)
+        {
+            animator.SetBool("Roll", Roll);
+        }
+        else
+            animator.SetBool("Roll", false);
+
     }
 
 
