@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float move;
     public Animator animator;
+    
     private Rigidbody2D rb;
     
     void Start()
@@ -41,7 +42,20 @@ public class PlayerMovement : MonoBehaviour
         }
         else
             animator.SetBool("Running", false);
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            animator.SetTrigger("Attack2");
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetTrigger("Attack");
+        }
+
     }
+
+
 
     private void OnCollisionStay2D(Collision2D collision)
     {
