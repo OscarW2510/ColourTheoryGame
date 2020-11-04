@@ -6,11 +6,13 @@ public class PlayerMovement : MonoBehaviour
 {
     public Transform playerTransform;
     public float playerSpeed;
+    public float sprintSpeed;
+    public float rollSpeed;
     public Vector3 respawnPoint;
 
     private float move;
     public Animator animator;
-    
+    private float speed;
     private Rigidbody2D rb;
     
     void Start()
@@ -23,8 +25,8 @@ public class PlayerMovement : MonoBehaviour
     {
         move = Input.GetAxis("Horizontal");
         animator.SetBool("Moving", (move != 0) ? true : false);
-        
-        rb.velocity = new Vector2(move * playerSpeed, rb.velocity.y);
+
+        speed = playerSpeed;
 
         if (move < 0)
         {
@@ -37,7 +39,8 @@ public class PlayerMovement : MonoBehaviour
 
         bool Running = Input.GetKey(KeyCode.LeftShift);
         if (move != 0)
-        {      
+        {
+            if (Running)speed += sprintSpeed;
             animator.SetBool("Running", Running);
         }
         else
@@ -56,11 +59,13 @@ public class PlayerMovement : MonoBehaviour
         bool Roll = Input.GetKey(KeyCode.LeftControl);
         if (move != 0)
         {
+            if (Roll) speed += rollSpeed;
             animator.SetBool("Roll", Roll);
         }
         else
             animator.SetBool("Roll", false);
-
+        
+        rb.velocity = new Vector2(move * speed, rb.velocity.y);
     }
 
 
