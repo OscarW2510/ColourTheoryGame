@@ -9,7 +9,9 @@ public class PatrolBehaviour : MonoBehaviour
     public bool movingRight;
     public Transform groundDetect;
 
-    
+
+
+
 
 
     void Update()
@@ -32,3 +34,6 @@ public class PatrolBehaviour : MonoBehaviour
         }
     }
 }
+
+
+
