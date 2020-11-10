@@ -64,6 +64,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else
             animator.SetBool("Roll", false);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            animator.SetTrigger("Jump");
+        }
         
         rb.velocity = new Vector2(move * speed, rb.velocity.y);
     }

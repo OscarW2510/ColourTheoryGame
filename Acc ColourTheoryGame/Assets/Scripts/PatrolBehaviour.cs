@@ -8,7 +8,7 @@ public class PatrolBehaviour : MonoBehaviour
     public float rayDist;
     public bool movingRight;
     public Transform groundDetect;
-
+    public Animator animator;
 
 
 
@@ -18,6 +18,8 @@ public class PatrolBehaviour : MonoBehaviour
     {
         transform.Translate(Vector2.right * speed * Time.deltaTime);
         RaycastHit2D groundCheck = Physics2D.Raycast(groundDetect.position, Vector2.down, rayDist);
+
+        animator.SetBool("EnemyMoving", true);
 
         if (groundCheck.collider == false)
         {
