@@ -14,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     private float speed;
     private Rigidbody2D rb;
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
+    public int attackDamage = 40;
     
     void Start()
     {
@@ -54,6 +58,21 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             animator.SetTrigger("Attack");
+
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+
+            foreach(Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponent<PatrolBehaviour>().TakeDamage(attackDamage);
+            }
+        }
+
+        void OnDrawGizmoSelected()
+        {
+            if (attackPoint == null)
+                return;
+
+            Gizmos.DrawWireSphere(attackPoint.position, attackRange);
         }
 
         bool Roll = Input.GetKey(KeyCode.LeftControl);
