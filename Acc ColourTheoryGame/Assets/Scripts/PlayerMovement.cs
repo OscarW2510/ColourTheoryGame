@@ -18,11 +18,17 @@ public class PlayerMovement : MonoBehaviour
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
     public int attackDamage = 40;
+    public int maxHealth = 100;
+    public int currentHealth;
+    public HealthBar healthBar;
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         respawnPoint = transform.position;
+
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
     }
 
     void Update()
@@ -90,6 +96,17 @@ public class PlayerMovement : MonoBehaviour
         }
         
         rb.velocity = new Vector2(move * speed, rb.velocity.y);
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            TakeDamage(20);
+        }
+        
+        void TakeDamage(int damage)
+        {
+            currentHealth -= damage;
+            healthBar.SetHealth(currentHealth);
+        }
     }
 
 
