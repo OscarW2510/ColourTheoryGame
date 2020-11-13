@@ -70,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
             foreach(Collider2D enemy in hitEnemies)
             {
                 enemy.GetComponent<PatrolBehaviour>().TakeDamage(attackDamage);
+                enemy.GetComponent<ArcherPatrolBehaviour>().TakeDamage(attackDamage);
             }
         }
 

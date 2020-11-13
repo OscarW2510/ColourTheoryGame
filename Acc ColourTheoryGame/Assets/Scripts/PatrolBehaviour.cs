@@ -59,6 +59,8 @@ public class PatrolBehaviour : MonoBehaviour
             }
         }
         transform.Translate(Vector2.right * speed * Time.deltaTime);
+
+
     }
 
     void Start()
@@ -90,6 +92,8 @@ public class PatrolBehaviour : MonoBehaviour
 
     }
 }
+
+
 
 
 
