@@ -69,18 +69,16 @@ public class PlayerMovement : MonoBehaviour
 
             foreach(Collider2D enemy in hitEnemies)
             {
-                enemy.GetComponent<PatrolBehaviour>().TakeDamage(attackDamage);
-                enemy.GetComponent<ArcherPatrolBehaviour>().TakeDamage(attackDamage);
+                var Patrol = enemy.GetComponent<PatrolBehaviour>();
+                var ArcherPatrol = enemy.GetComponent<ArcherPatrolBehaviour>();
+
+                if (Patrol != null)
+                    Patrol.TakeDamage(attackDamage);
+                else if (ArcherPatrol != null)
+                    ArcherPatrol.TakeDamage(attackDamage);
             }
         }
 
-        void OnDrawGizmoSelected()
-        {
-            if (attackPoint == null)
-                return;
-
-            Gizmos.DrawWireSphere(attackPoint.position, attackRange);
-        }
 
         bool Roll = Input.GetKey(KeyCode.LeftControl);
         if (move != 0)
@@ -137,5 +135,14 @@ public class PlayerMovement : MonoBehaviour
         {
             respawnPoint = other.transform.position;
         }
+    }
+
+
+    void OnDrawGizmoSelected()
+    {
+        if (attackPoint == null)
+            return;
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }

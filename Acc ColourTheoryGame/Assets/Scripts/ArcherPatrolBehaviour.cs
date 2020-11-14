@@ -22,7 +22,7 @@ public class ArcherPatrolBehaviour : MonoBehaviour
         if (isPlayer != null)
         {
             direction = isPlayer.GetComponentInChildren<Animator>().gameObject.transform.position.x - transform.position.x;
-            Debug.Log(isPlayer.gameObject.transform.position.x + "\n" + transform.position.x);
+            Debug.Log(isPlayer.gameObject);
             animator.SetTrigger("ArcherAttack");
         }
         if (direction < 0)
@@ -88,5 +88,10 @@ public class ArcherPatrolBehaviour : MonoBehaviour
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
 
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireCube(checkOrigin.position, boxDimensions);   
     }
 }
