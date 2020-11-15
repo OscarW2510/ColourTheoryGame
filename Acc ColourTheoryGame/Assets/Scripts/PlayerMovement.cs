@@ -47,8 +47,8 @@ public class PlayerMovement : MonoBehaviour
             playerTransform.eulerAngles = new Vector3(0, 0, 0);
         }
 
-        bool Running = Input.GetKey(KeyCode.LeftShift);  
-        if (move != 0)
+        bool Running = Input.GetKey(KeyCode.LeftShift) && StaminaBar.instance.GetStamina() -15 > 0;
+        if (move != 0 && Running)
         {
             if (Input.GetKeyDown(KeyCode.LeftShift))
                 StaminaBar.instance.UseStamina(15);

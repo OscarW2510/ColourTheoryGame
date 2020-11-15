@@ -27,7 +27,10 @@ public class StaminaBar : MonoBehaviour
         staminaBar.value = maxStamina;
     }
 
-
+    public int GetStamina()
+    {
+        return currentStamina;
+    }
     public void UseStamina(int amount)
     {
         if(currentStamina - amount >= 0)
