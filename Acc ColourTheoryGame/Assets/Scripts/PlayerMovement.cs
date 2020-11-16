@@ -141,6 +141,17 @@ public class PlayerMovement : MonoBehaviour
         {
             respawnPoint = other.transform.position;
         }
+
+        if (other.tag == "HealthPickup")
+        {
+            currentHealth += other.GetComponent<HealthPickup>().healthToGive;
+
+            if (currentHealth > maxHealth) currentHealth = maxHealth;
+
+            Destroy(other.gameObject);
+
+            healthBar.SetHealth(currentHealth);
+        }
     }
 
 
