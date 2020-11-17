@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -85,6 +86,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
 
+
+
+
+
         bool Roll = Input.GetKey(KeyCode.LeftControl);
         if (move != 0)
         {
@@ -112,6 +117,19 @@ public class PlayerMovement : MonoBehaviour
             healthBar.SetHealth(currentHealth);
         }
     }
+
+    public void TakeDamage(int takeDamage = 25)
+    {
+        currentHealth -= takeDamage;
+
+        animator.SetTrigger("PlayerHurt");
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
 
 
 
@@ -161,5 +179,19 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    void Die()
+    {
+        Debug.Log("Player died");
+
+        animator.SetBool("PlayerIsDead", true);
+
+        this.enabled = false;
+
+        Time.timeScale = 0f;
+
+        SceneManager.LoadScene("GameOverScreen");
+
     }
 }

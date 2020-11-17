@@ -14,6 +14,8 @@ public class PatrolBehaviour : MonoBehaviour
     public Transform checkOrigin;
     public Vector2 boxDimensions;
     public LayerMask playerMask;
+    public float animationTime;
+    float Timer;
 
     void Update()
     {
@@ -22,8 +24,15 @@ public class PatrolBehaviour : MonoBehaviour
         if(isPlayer != null)
         {
            direction = isPlayer.GetComponentInChildren<Animator>().gameObject.transform.position.x - transform.position.x;
-           Debug.Log(isPlayer.gameObject.transform.position.x + "\n" + transform.position.x);
-           animator.SetTrigger("EnemyAttack");
+            if(Timer >= animationTime)
+            {
+                Debug.Log(isPlayer.gameObject.transform.position.x + "\n" + transform.position.x);
+                animator.SetTrigger("EnemyAttack");
+                isPlayer.GetComponent<PlayerMovement>().TakeDamage();
+                Timer = 0;
+            }
+            Timer += Time.deltaTime;
+
         }
         if(direction < 0)
         {
@@ -66,6 +75,7 @@ public class PatrolBehaviour : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        
     }
 
     public void TakeDamage(int damage)
