@@ -9,6 +9,7 @@ TagManager:
   - FallDetector
   - Checkpoint
   - HealthPickup
+  - Arrow
   layers:
   - Default
   - TransparentFX

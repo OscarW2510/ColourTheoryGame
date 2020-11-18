@@ -22,6 +22,8 @@ public class ArrowMovement : MonoBehaviour
         {
             direction = isPlayer.GetComponentInChildren<Animator>().gameObject.transform.position.x - transform.position.x;
 
+            //isPlayer.GetComponent<PlayerMovement>().TakeDamage();
+
             Debug.Log(direction);
         }
         if (direction < 0)

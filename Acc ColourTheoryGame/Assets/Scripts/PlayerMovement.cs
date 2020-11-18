@@ -48,11 +48,11 @@ public class PlayerMovement : MonoBehaviour
             playerTransform.eulerAngles = new Vector3(0, 0, 0);
         }
 
-        bool Running = Input.GetKey(KeyCode.LeftShift) && StaminaBar.instance.GetStamina() -15 > 0;
+        bool Running = Input.GetKey(KeyCode.LeftShift) && StaminaBar.instance.GetStamina() -10 > 0;
         if (move != 0 && Running)
         {
             if (Input.GetKeyDown(KeyCode.LeftShift))
-                StaminaBar.instance.UseStamina(15);
+                StaminaBar.instance.UseStamina(10);
 
             if (Running)speed += sprintSpeed;
             animator.SetBool("Running", Running);
@@ -90,9 +90,13 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        bool Roll = Input.GetKey(KeyCode.LeftControl);
+        bool Roll = Input.GetKey(KeyCode.LeftControl) && StaminaBar.instance.GetStamina() - 15 > 0; 
         if (move != 0)
         {
+
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+                StaminaBar.instance.UseStamina(15);
+
             if (Roll) speed += rollSpeed;
             animator.SetBool("Roll", Roll);
         }
@@ -170,6 +174,8 @@ public class PlayerMovement : MonoBehaviour
 
             healthBar.SetHealth(currentHealth);
         }
+
+
     }
 
 

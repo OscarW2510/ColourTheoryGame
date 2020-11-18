@@ -363,7 +363,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -2.61, y: 2.59}
+  m_AnchoredPosition: {x: -2.29, y: 2.57}
   m_SizeDelta: {x: 916.97363, y: 510.3629}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &130225878
@@ -13112,7 +13112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065759709}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 91.6, y: 11.42, z: -18.53}
+  m_LocalPosition: {x: 92.7, y: 10.14, z: -18.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 246367598}
@@ -13645,7 +13645,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 405, y: 235.1}
+  m_AnchoredPosition: {x: 380, y: 235.1}
   m_SizeDelta: {x: 174.57465, y: 28.054794}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1444661722
@@ -15019,13 +15019,13 @@ MonoBehaviour:
   animator: {fileID: 721708490}
   maxHealth: 100
   checkOrigin: {fileID: 1801912106}
-  boxDimensions: {x: 24, y: 3}
+  boxDimensions: {x: 18, y: 2.9}
   playerMask:
     serializedVersion: 2
     m_Bits: 1024
   arrowPrefab: {fileID: 8453842520777590205, guid: 09d750589f44e0840b171fc9c61e08c5,
     type: 3}
-  animationTime: 0.7
+  animationTime: 1.5
 --- !u!61 &2141030783
 BoxCollider2D:
   m_ObjectHideFlags: 0
