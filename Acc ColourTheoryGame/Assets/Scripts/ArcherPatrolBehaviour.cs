@@ -14,26 +14,37 @@ public class ArcherPatrolBehaviour : MonoBehaviour
     public Transform checkOrigin;
     public Vector2 boxDimensions;
     public LayerMask playerMask;
+    public GameObject arrowPrefab;
+    public float animationTime;
+    float Timer;
 
     void Update()
     {
         float direction = 0;
         var isPlayer = Physics2D.OverlapBox(checkOrigin.position, boxDimensions, 0f, playerMask);
+        Debug.Log("Archer" + checkOrigin.position);
         if (isPlayer != null)
-        {
+        { 
             direction = isPlayer.GetComponentInChildren<Animator>().gameObject.transform.position.x - transform.position.x;
-            Debug.Log(isPlayer.gameObject);
-            animator.SetTrigger("ArcherAttack");
+            if (Timer >= animationTime)
+            {
+                //Debug.Log(isPlayer.gameObject);
+                animator.SetTrigger("ArcherAttack");
+                Instantiate(arrowPrefab, transform.position, Quaternion.identity);
+                Timer = 0;
+            }
+            Timer += Time.deltaTime;
+         
         }
         if (direction < 0)
         {
-            Debug.Log("Player is on the right");
+            //Debug.Log("Player is on the right");
             transform.eulerAngles = new Vector3(0, -180, 0);
             movingRight = false;
         }
         else if (direction > 0)
         {
-            Debug.Log("Player is on the left");
+            //Debug.Log("Player is on the left");
             transform.eulerAngles = new Vector3(0, 0, 0);
             movingRight = true;
         }
