@@ -174,6 +174,11 @@ public class PlayerMovement : MonoBehaviour
 
             healthBar.SetHealth(currentHealth);
         }
+        if (other.tag == "Arrow")
+        {
+            Destroy(other.gameObject);
+        }
+        
 
 
     }
@@ -195,9 +200,16 @@ public class PlayerMovement : MonoBehaviour
 
         this.enabled = false;
 
-        Time.timeScale = 0f;
+        
 
+        Time.timeScale = 0.1f;
+
+        Invoke("LoadGameOverScreen", 0.2f);
+
+    }
+
+    void LoadGameOverScreen()
+    {
         SceneManager.LoadScene("GameOverScreen");
-
     }
 }

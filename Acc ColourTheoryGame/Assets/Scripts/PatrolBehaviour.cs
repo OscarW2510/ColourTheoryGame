@@ -28,7 +28,7 @@ public class PatrolBehaviour : MonoBehaviour
             {
                 Debug.Log(isPlayer.gameObject.transform.position.x + "\n" + transform.position.x);
                 animator.SetTrigger("EnemyAttack");
-                isPlayer.GetComponent<PlayerMovement>().TakeDamage();
+                isPlayer.GetComponent<PlayerMovement>().TakeDamage(20);
                 Timer = 0;
             }
             Timer += Time.deltaTime;
