@@ -125,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(int takeDamage = 25)
     {
         currentHealth -= takeDamage;
-
+        healthBar.SetHealth(currentHealth);
         animator.SetTrigger("PlayerHurt");
 
         if (currentHealth <= 0)

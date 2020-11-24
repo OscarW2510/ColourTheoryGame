@@ -16,6 +16,8 @@ public class PatrolBehaviour : MonoBehaviour
     public LayerMask playerMask;
     public float animationTime;
     float Timer;
+    public bool drop;
+    public GameObject theDrop;
 
     void Update()
     {
@@ -87,7 +89,9 @@ public class PatrolBehaviour : MonoBehaviour
         if (currentHealth <= 0)
         {
             Die();
+            if (drop) Instantiate(theDrop, transform.position, transform.rotation);
         }
+        
     }
 
     void Die()

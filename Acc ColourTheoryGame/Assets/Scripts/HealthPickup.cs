@@ -5,7 +5,7 @@ using UnityEngine;
 public class HealthPickup : MonoBehaviour
 {
 
-    public int healthToGive = 20;
+    public int healthToGive = 30;
     
 
 }
