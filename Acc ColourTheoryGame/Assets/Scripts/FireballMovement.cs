@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowMovement : MonoBehaviour
+public class FireballMovement : MonoBehaviour
 {
     public float speed;
     public bool movingRight;
@@ -10,7 +10,7 @@ public class ArrowMovement : MonoBehaviour
     public Vector2 boxDimensions;
     public LayerMask playerMask;
 
-    Vector2 arrowDirection;
+    Vector2 fireballDirection;
     internal GameObject mumma;
 
     void Start()
@@ -19,13 +19,13 @@ public class ArrowMovement : MonoBehaviour
 
         float direction = 0;
         var isPlayer = Physics2D.OverlapBox(checkOrigin.position, boxDimensions, 0f, playerMask);
-        Debug.Log("Arrow" + checkOrigin.position);
+        Debug.Log("Fireball" + checkOrigin.position);
         if (isPlayer != null)
         {
             direction = isPlayer.GetComponentInChildren<Animator>().gameObject.transform.position.x - transform.position.x;
 
-            isPlayer.GetComponent<PlayerMovement>().TakeDamage(15);
-           
+            isPlayer.GetComponent<PlayerMovement>().TakeDamage(5);
+
 
 
             Debug.Log(direction);
@@ -35,7 +35,7 @@ public class ArrowMovement : MonoBehaviour
             //Debug.Log("Player is on the right");
             //transform.eulerAngles = new Vector3(0, -180, 0);
             //movingRight = false;
-            arrowDirection = Vector2.left;
+            fireballDirection = Vector2.left;
             GetComponent<SpriteRenderer>().flipX = true;
         }
         else if (direction > 0)
@@ -43,16 +43,14 @@ public class ArrowMovement : MonoBehaviour
             //Debug.Log("Player is on the left");
             //transform.eulerAngles = new Vector3(0, 0, 0);
             //movingRight = true;
-            arrowDirection = Vector2.right;
+            fireballDirection = Vector2.right;
             GetComponent<SpriteRenderer>().flipX = false;
         }
     }
-    
+
 
     void Update()
     {
-        transform.Translate(arrowDirection * speed * Time.deltaTime);
+        transform.Translate(fireballDirection * speed * Time.deltaTime);
     }
-
-
 }

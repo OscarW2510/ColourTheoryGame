@@ -77,11 +77,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 var Patrol = enemy.GetComponent<PatrolBehaviour>();
                 var ArcherPatrol = enemy.GetComponent<ArcherPatrolBehaviour>();
+                var MagePatrol = enemy.GetComponent<MagePatrolBehaviour>();
 
                 if (Patrol != null)
                     Patrol.TakeDamage(attackDamage);
                 else if (ArcherPatrol != null)
                     ArcherPatrol.TakeDamage(attackDamage);
+                else if (MagePatrol != null)
+                    MagePatrol.TakeDamage(attackDamage);
             }
         }
 
@@ -178,6 +181,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(other.gameObject);
         }
+        if (other.tag == "Fireball")
+        {
+            Destroy(other.gameObject);
+        }
         
 
 
@@ -212,4 +219,5 @@ public class PlayerMovement : MonoBehaviour
     {
         SceneManager.LoadScene("GameOverScreen");
     }
+
 }

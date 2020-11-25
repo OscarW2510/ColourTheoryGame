@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArcherPatrolBehaviour : MonoBehaviour
+public class MagePatrolBehaviour : MonoBehaviour
 {
     public float speed;
     public float rayDist;
     public bool movingRight;
     public Transform groundDetect;
     public Animator animator;
-    public int maxHealth = 100;
+    public int maxHealth = 200;
     int currentHealth;
     public Transform checkOrigin;
     public Vector2 boxDimensions;
     public LayerMask playerMask;
-    public GameObject arrowPrefab;
+    public GameObject fireballPrefab;
     public float animationTime;
     float Timer;
     public bool drop;
@@ -24,20 +24,20 @@ public class ArcherPatrolBehaviour : MonoBehaviour
     {
         float direction = 0;
         var isPlayer = Physics2D.OverlapBox(checkOrigin.position, boxDimensions, 0f, playerMask);
-        Debug.Log("Archer" + checkOrigin.position);
+        Debug.Log("Mage" + checkOrigin.position);
         if (isPlayer != null)
-        { 
+        {
             direction = isPlayer.GetComponentInChildren<Animator>().gameObject.transform.position.x - transform.position.x;
             if (Timer >= animationTime)
             {
                 //Debug.Log(isPlayer.gameObject);
-                animator.SetTrigger("ArcherAttack");
-                var arrow = Instantiate(arrowPrefab, transform.position, Quaternion.identity);
-                arrow.GetComponent<ArrowMovement>().mumma = this.gameObject;
+                animator.SetTrigger("MageAttack");
+                var fireBall = Instantiate(fireballPrefab, transform.position, Quaternion.identity);
+                fireBall.GetComponent<FireballMovement>().mumma = this.gameObject;
                 Timer = 0;
             }
             Timer += Time.deltaTime;
-         
+
         }
         if (direction < 0)
         {
@@ -57,7 +57,7 @@ public class ArcherPatrolBehaviour : MonoBehaviour
 
         RaycastHit2D groundCheck = Physics2D.Raycast(groundDetect.position, Vector2.down, rayDist);
 
-        animator.SetBool("ArcherMoving", true);
+        animator.SetBool("MageMoving", true);
 
         if (groundCheck.collider == false)
         {
@@ -83,8 +83,8 @@ public class ArcherPatrolBehaviour : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-
-        animator.SetTrigger("ArcherHurt");
+        
+        animator.SetTrigger("MageIsHurt");
 
         if (currentHealth <= 0)
         {
@@ -97,7 +97,7 @@ public class ArcherPatrolBehaviour : MonoBehaviour
     {
         Debug.Log("Enemy died");
 
-        animator.SetBool("ArcherIsDead", true);
+        animator.SetBool("MageIsDead", true);
 
 
         GetComponent<Collider2D>().enabled = false;
@@ -107,6 +107,6 @@ public class ArcherPatrolBehaviour : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireCube(checkOrigin.position, boxDimensions);   
+        Gizmos.DrawWireCube(checkOrigin.position, boxDimensions);
     }
 }

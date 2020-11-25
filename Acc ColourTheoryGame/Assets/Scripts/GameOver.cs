@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
+    void Start()
+    {
+        Time.timeScale = 1;  
+    }
     public void QuitGame()
     {
         Debug.Log("Quit");

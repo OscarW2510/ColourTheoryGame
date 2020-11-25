@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mage_walk
+  m_Name: Mage Walk
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -21,21 +21,21 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: e0f1039b447942a41b63f89cdcfd6a80, type: 3}
-    - time: 0.083333336
-      value: {fileID: 21300000, guid: 712716d2010c23740b0e6a0708e53f68, type: 3}
     - time: 0.16666667
-      value: {fileID: 21300000, guid: 24e6e32c8d4bfb94ca903830ea2d3913, type: 3}
-    - time: 0.25
-      value: {fileID: 21300000, guid: 6f046129700a8f34abe10799ed7c762d, type: 3}
+      value: {fileID: 21300000, guid: 712716d2010c23740b0e6a0708e53f68, type: 3}
     - time: 0.33333334
+      value: {fileID: 21300000, guid: 24e6e32c8d4bfb94ca903830ea2d3913, type: 3}
+    - time: 0.5
+      value: {fileID: 21300000, guid: 6f046129700a8f34abe10799ed7c762d, type: 3}
+    - time: 0.6666667
       value: {fileID: 21300000, guid: 3a5bd80dd5e0b464da5e10f182dbfcf2, type: 3}
-    - time: 0.41666666
+    - time: 0.8333333
       value: {fileID: 21300000, guid: 97085027378ad02419c4b53b1242a159, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 12
+  m_SampleRate: 60
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -61,7 +61,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.5
+    m_StopTime: 0.84999996
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
