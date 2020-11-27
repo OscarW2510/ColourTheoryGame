@@ -109,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             animator.SetTrigger("Jump");
+            SoundManager.PlaySound("jump");
         }
         
         rb.velocity = new Vector2(move * speed, rb.velocity.y);

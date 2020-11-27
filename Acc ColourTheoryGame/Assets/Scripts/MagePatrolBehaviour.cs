@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class MagePatrolBehaviour : MonoBehaviour
 {
     public float speed;
@@ -19,6 +19,7 @@ public class MagePatrolBehaviour : MonoBehaviour
     float Timer;
     public bool drop;
     public GameObject theDrop;
+    public Slider slider;
 
     void Update()
     {
@@ -78,6 +79,9 @@ public class MagePatrolBehaviour : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        slider.maxValue = maxHealth;
+        slider.value = currentHealth;
+        
     }
 
     public void TakeDamage(int damage)
@@ -91,6 +95,7 @@ public class MagePatrolBehaviour : MonoBehaviour
             Die();
             if (drop) Instantiate(theDrop, transform.position, transform.rotation);
         }
+        slider.value = currentHealth;
     }
 
     void Die()
