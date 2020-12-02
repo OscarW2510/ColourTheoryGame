@@ -2,32 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireballMovement : MonoBehaviour
+public class OrangeFireballMovement : MonoBehaviour
 {
     public float speed;
     public bool movingRight;
     Transform checkOrigin;
     public Vector2 boxDimensions;
     public LayerMask playerMask;
+    public int attackDamage;
 
     Vector2 fireballDirection;
-    internal GameObject mumma;
 
     void Start()
     {
-        checkOrigin = mumma.transform.Find("PlayerDetect").transform;
 
+        checkOrigin = transform;
         float direction = 0;
         var isPlayer = Physics2D.OverlapBox(checkOrigin.position, boxDimensions, 0f, playerMask);
+       
         if (isPlayer != null)
         {
             direction = isPlayer.GetComponentInChildren<Animator>().gameObject.transform.position.x - transform.position.x;
 
-            isPlayer.GetComponent<PlayerMovement>().TakeDamage(5);
+            var Patrol = isPlayer.GetComponent<PatrolBehaviour>();
+            var ArcherPatrol = isPlayer.GetComponent<ArcherPatrolBehaviour>();
+            var MagePatrol = isPlayer.GetComponent<MagePatrolBehaviour>();
+
+            if (Patrol != null)
+                Patrol.TakeDamage(attackDamage);
+            else if (ArcherPatrol != null)
+                ArcherPatrol.TakeDamage(attackDamage);
+            else if (MagePatrol != null)
+                MagePatrol.TakeDamage(attackDamage);
 
 
 
 
+        }
+        else
+        {
+            direction =FindObjectOfType<PlayerMovement>().GetComponentInChildren<Animator>().transform.right.x;
         }
         if (direction < 0)
         {

@@ -24,7 +24,7 @@ public class ArcherPatrolBehaviour : MonoBehaviour
     {
         float direction = 0;
         var isPlayer = Physics2D.OverlapBox(checkOrigin.position, boxDimensions, 0f, playerMask);
-        Debug.Log("Archer" + checkOrigin.position);
+
         if (isPlayer != null)
         { 
             direction = isPlayer.GetComponentInChildren<Animator>().gameObject.transform.position.x - transform.position.x;

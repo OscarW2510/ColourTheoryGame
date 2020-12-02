@@ -25,7 +25,7 @@ public class MagePatrolBehaviour : MonoBehaviour
     {
         float direction = 0;
         var isPlayer = Physics2D.OverlapBox(checkOrigin.position, boxDimensions, 0f, playerMask);
-        Debug.Log("Mage" + checkOrigin.position);
+
         if (isPlayer != null)
         {
             direction = isPlayer.GetComponentInChildren<Animator>().gameObject.transform.position.x - transform.position.x;
@@ -113,5 +113,15 @@ public class MagePatrolBehaviour : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireCube(checkOrigin.position, boxDimensions);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Hit");
+        if (other.tag == "OrangeFireball")
+        {
+            Debug.Log("Fireball");
+            Destroy(other.gameObject);
+        }
     }
 }

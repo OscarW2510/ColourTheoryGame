@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public HealthBar healthBar;
+    public GameObject orangefireballPrefab;
     
     void Start()
     {
@@ -64,12 +65,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            animator.SetTrigger("Attack2");
+            Instantiate(orangefireballPrefab, animator.transform.position, Quaternion.identity);
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-            animator.SetTrigger("Attack");
+            animator.SetTrigger("Attack2");
 
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
@@ -150,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
             if (Input. GetKey(KeyCode.Space))
             {
                 rb.AddForce(Vector3.up * (rb.mass * rb.gravityScale * 20f * 10f));
-                Debug.Log("Working jump you twat");
+
             }
         }
     }
