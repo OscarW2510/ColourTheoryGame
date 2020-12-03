@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static AudioClip jumpSound;
+    public static AudioClip jumpSound, deathSound, runningSound;
     static AudioSource audioSrc;
     void Start()
     {
@@ -28,6 +28,12 @@ public class SoundManager : MonoBehaviour
         {
             case "jump":
                 audioSrc.PlayOneShot(jumpSound);
+                break;
+            case "death":
+                audioSrc.PlayOneShot(deathSound);
+                break;
+            case "running":
+                audioSrc.PlayOneShot(runningSound);
                 break;
         }
     }

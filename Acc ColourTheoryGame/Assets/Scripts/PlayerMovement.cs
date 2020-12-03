@@ -100,6 +100,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.LeftControl))
                 StaminaBar.instance.UseStamina(15);
+            SoundManager.PlaySound("running");
 
             if (Roll) speed += rollSpeed;
             animator.SetBool("Roll", Roll);
@@ -109,8 +110,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            animator.SetTrigger("Jump");
             SoundManager.PlaySound("jump");
+
+            animator.SetTrigger("Jump");
         }
         
         rb.velocity = new Vector2(move * speed, rb.velocity.y);
@@ -203,6 +205,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Die()
     {
+        SoundManager.PlaySound("death");
+
         Debug.Log("Player died");
 
         animator.SetBool("PlayerIsDead", true);
