@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   movingRight: 0
-  boxDimensions: {x: 9.54, y: 3}
+  boxDimensions: {x: 10, y: 3}
   playerMask:
     serializedVersion: 2
     m_Bits: 1024

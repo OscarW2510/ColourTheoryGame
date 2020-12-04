@@ -23,21 +23,6 @@ public class OrangeFireballMovement : MonoBehaviour
         if (isPlayer != null)
         {
             direction = isPlayer.GetComponentInChildren<Animator>().gameObject.transform.position.x - transform.position.x;
-
-            var Patrol = isPlayer.GetComponent<PatrolBehaviour>();
-            var ArcherPatrol = isPlayer.GetComponent<ArcherPatrolBehaviour>();
-            var MagePatrol = isPlayer.GetComponent<MagePatrolBehaviour>();
-
-            if (Patrol != null)
-                Patrol.TakeDamage(attackDamage);
-            else if (ArcherPatrol != null)
-                ArcherPatrol.TakeDamage(attackDamage);
-            else if (MagePatrol != null)
-                MagePatrol.TakeDamage(attackDamage);
-
-
-
-
         }
         else
         {
@@ -61,6 +46,22 @@ public class OrangeFireballMovement : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        var Patrol = collision.GetComponent<PatrolBehaviour>();
+        var ArcherPatrol = collision.GetComponent<ArcherPatrolBehaviour>();
+        var MagePatrol = collision.GetComponent<MagePatrolBehaviour>();
+
+        if (Patrol != null)
+            Patrol.TakeDamage(attackDamage);
+        else if (ArcherPatrol != null)
+            ArcherPatrol.TakeDamage(attackDamage);
+        else if (MagePatrol != null)
+            MagePatrol.TakeDamage(attackDamage);
+
+        if(Patrol != null || ArcherPatrol != null || MagePatrol != null)
+            Destroy(gameObject);
+    }
 
     void Update()
     {

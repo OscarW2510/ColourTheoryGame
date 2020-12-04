@@ -19,16 +19,9 @@ public class ArrowMovement : MonoBehaviour
 
         float direction = 0;
         var isPlayer = Physics2D.OverlapBox(checkOrigin.position, boxDimensions, 0f, playerMask);
-        Debug.Log("Arrow" + checkOrigin.position);
         if (isPlayer != null)
         {
             direction = isPlayer.GetComponentInChildren<Animator>().gameObject.transform.position.x - transform.position.x;
-
-            isPlayer.GetComponent<PlayerMovement>().TakeDamage(15);
-           
-
-
-            Debug.Log(direction);
         }
         if (direction < 0)
         {
@@ -47,7 +40,16 @@ public class ArrowMovement : MonoBehaviour
             GetComponent<SpriteRenderer>().flipX = false;
         }
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player Display")
+        {
+            collision.GetComponent<PlayerMovement>().TakeDamage(5);
+            Destroy(gameObject);
+        }
+    }
+
 
     void Update()
     {

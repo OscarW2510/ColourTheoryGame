@@ -105,8 +105,20 @@ public class ArcherPatrolBehaviour : MonoBehaviour
 
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Hit");
+        if (other.tag == "OrangeFireball")
+        {
+            Debug.Log("Fireball");
+            Destroy(other.gameObject);
+        }
+    }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireCube(checkOrigin.position, boxDimensions);   
     }
+
+
 }

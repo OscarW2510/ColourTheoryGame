@@ -110,11 +110,6 @@ public class MagePatrolBehaviour : MonoBehaviour
 
     }
 
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireCube(checkOrigin.position, boxDimensions);
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Hit");
@@ -124,4 +119,11 @@ public class MagePatrolBehaviour : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireCube(checkOrigin.position, boxDimensions);
+    }
+
+
 }

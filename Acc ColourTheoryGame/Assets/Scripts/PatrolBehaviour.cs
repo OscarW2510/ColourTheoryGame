@@ -105,6 +105,16 @@ public class PatrolBehaviour : MonoBehaviour
         this.enabled = false;
 
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Hit");
+        if (other.tag == "OrangeFireball")
+        {
+            Debug.Log("Fireball");
+            Destroy(other.gameObject);
+        }
+    }
 }
 
 

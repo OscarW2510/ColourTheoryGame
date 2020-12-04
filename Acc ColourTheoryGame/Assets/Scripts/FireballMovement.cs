@@ -22,12 +22,6 @@ public class FireballMovement : MonoBehaviour
         if (isPlayer != null)
         {
             direction = isPlayer.GetComponentInChildren<Animator>().gameObject.transform.position.x - transform.position.x;
-
-            isPlayer.GetComponent<PlayerMovement>().TakeDamage(5);
-
-
-
-
         }
         if (direction < 0)
         {
@@ -44,6 +38,15 @@ public class FireballMovement : MonoBehaviour
             //movingRight = true;
             fireballDirection = Vector2.right;
             GetComponent<SpriteRenderer>().flipX = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player Display")
+        {
+            collision.GetComponent<PlayerMovement>().TakeDamage(5);
+            Destroy(gameObject);
         }
     }
 
