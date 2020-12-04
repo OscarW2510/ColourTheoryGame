@@ -128,7 +128,7 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 512
-  attackDamage: 50
+  attackDamage: 25
 --- !u!50 &2516573718240827332
 Rigidbody2D:
   serializedVersion: 4
