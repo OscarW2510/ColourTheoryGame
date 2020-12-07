@@ -32454,7 +32454,7 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
-  attackDamage: 20
+  attackDamage: 35
   maxHealth: 100
   currentHealth: 0
   healthBar: {fileID: 1374441016}
