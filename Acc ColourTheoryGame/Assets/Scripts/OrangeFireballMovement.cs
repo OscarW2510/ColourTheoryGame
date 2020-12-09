@@ -11,6 +11,7 @@ public class OrangeFireballMovement : MonoBehaviour
     public LayerMask playerMask;
     public int attackDamage;
 
+
     Vector2 fireballDirection;
 
     void Start()

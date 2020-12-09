@@ -23,7 +23,9 @@ public class PlayerMovement : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
     public GameObject orangefireballPrefab;
-    
+    public float rateofFire = 2;
+    float timer = 0;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -53,8 +55,11 @@ public class PlayerMovement : MonoBehaviour
         if (move != 0 && Running)
         {
             if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
                 StaminaBar.instance.UseStamina(10);
-
+                SoundManager.PlaySound("running");
+            }
+             
             if (Running)speed += sprintSpeed;
             animator.SetBool("Running", Running);
         }
@@ -63,10 +68,13 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1)&& timer <= 0)
         {
             Instantiate(orangefireballPrefab, animator.transform.position, Quaternion.identity);
+            SoundManager.PlaySound("fireball");
+            timer = 1 / rateofFire;
         }
+        timer -= Time.deltaTime;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -100,7 +108,6 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.LeftControl))
                 StaminaBar.instance.UseStamina(15);
-            SoundManager.PlaySound("running");
 
             if (Roll) speed += rollSpeed;
             animator.SetBool("Roll", Roll);

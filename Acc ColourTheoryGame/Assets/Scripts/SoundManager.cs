@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static AudioClip jumpSound, deathSound, runningSound;
+    public static AudioClip jumpSound, deathSound, runningSound, fireballSound;
     static AudioSource audioSrc;
     void Start()
     {
         jumpSound = Resources.Load<AudioClip>("jump");
-
-
+        runningSound = Resources.Load<AudioClip>("running");
+        deathSound = Resources.Load<AudioClip>("death");
+        fireballSound = Resources.Load<AudioClip>("fireball");
 
 
         audioSrc = GetComponent<AudioSource>();
@@ -34,6 +35,9 @@ public class SoundManager : MonoBehaviour
                 break;
             case "running":
                 audioSrc.PlayOneShot(runningSound);
+                break;
+            case "fireball":
+                audioSrc.PlayOneShot(fireballSound);
                 break;
         }
     }
