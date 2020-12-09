@@ -950,7 +950,7 @@ MonoBehaviour:
   movingRight: 0
   groundDetect: {fileID: 2021455650}
   animator: {fileID: 1293829861}
-  maxHealth: 500
+  maxHealth: 400
   checkOrigin: {fileID: 2117013287}
   boxDimensions: {x: 9.54, y: 3}
   playerMask:
@@ -31801,7 +31801,7 @@ MonoBehaviour:
   movingRight: 0
   groundDetect: {fileID: 1288638378}
   animator: {fileID: 1815577584}
-  maxHealth: 150
+  maxHealth: 120
   checkOrigin: {fileID: 1163787635}
   boxDimensions: {x: 11.68, y: 2.9}
   playerMask:
@@ -32564,7 +32564,7 @@ MonoBehaviour:
   movingRight: 0
   groundDetect: {fileID: 1635018233}
   animator: {fileID: 909565846}
-  maxHealth: 150
+  maxHealth: 120
   checkOrigin: {fileID: 288969552}
   boxDimensions: {x: 3, y: 3}
   playerMask:
@@ -41528,7 +41528,7 @@ MonoBehaviour:
   movingRight: 0
   groundDetect: {fileID: 675277877}
   animator: {fileID: 1847827577}
-  maxHealth: 150
+  maxHealth: 120
   checkOrigin: {fileID: 264479837}
   boxDimensions: {x: 3, y: 3}
   playerMask:
@@ -41987,7 +41987,7 @@ MonoBehaviour:
   movingRight: 0
   groundDetect: {fileID: 212707484}
   animator: {fileID: 721708490}
-  maxHealth: 150
+  maxHealth: 120
   checkOrigin: {fileID: 1801912106}
   boxDimensions: {x: 18, y: 2.9}
   playerMask:
